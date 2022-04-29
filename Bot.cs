@@ -8,13 +8,13 @@ namespace Napilnik_001
 
         public Bot(Weapon weapon)
         {
-            _weapon = weapon ?? throw new ArgumentOutOfRangeException(nameof(weapon));
+            _weapon = weapon ?? throw new NullReferenceException(nameof(_weapon));
         }
 
         public void OnSeePlayer(Player player)
         {
             if (player == null)
-                throw new ArgumentOutOfRangeException(nameof(player));
+                throw new NullReferenceException(nameof(player));
 
             _weapon.Fire(player);
         }
