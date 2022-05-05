@@ -6,19 +6,22 @@ namespace Napilnik_001
     {
         private int _health;
 
-        private bool _isAlive => _health > 0;
+        private bool _isDead => _health <= 0;
 
         public Player(int health)
         {
             _health = health;
+
+            if (_isDead)
+                throw new ArgumentException(nameof(_health));
         }
 
         public void TakeDamage(int damage)
         {
-            if (_isAlive == false)
-                throw new ArgumentOutOfRangeException(nameof(_health));
-
             _health -= damage;
+
+            if (_isDead)
+                Console.WriteLine("Я умер");
         }
     }
 }

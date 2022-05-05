@@ -2,12 +2,12 @@
 
 namespace Napilnik_001
 {
-    class Weapon
+       class Weapon
     {
         private readonly int _damage;
         private int _bullets;
 
-        private bool CanFire => _bullets > 0;
+        private bool _CanFire => _bullets > 0;
 
         public Weapon(int damage, int bullets)
         {
@@ -15,12 +15,14 @@ namespace Napilnik_001
             _bullets = bullets;
 
             if (_damage <= 0)
-                throw new ArgumentOutOfRangeException(nameof(_damage));
+                throw new ArgumentException(nameof(_damage));
+            if(_bullets < 0)
+                throw new ArgumentException(nameof(_bullets));
         }
 
         public void Fire(Player player)
         {
-            if (CanFire == false)
+            if (_CanFire == false)
                 throw new ArgumentOutOfRangeException(nameof(_bullets));
 
             _bullets--;
