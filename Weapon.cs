@@ -7,7 +7,7 @@ namespace Napilnik_001
         private readonly int _damage;
         private int _bullets;
 
-        private bool _CanFire => _bullets > 0;
+        private bool _canFire => _bullets > 0;
 
         public Weapon(int damage, int bullets)
         {
@@ -22,7 +22,7 @@ namespace Napilnik_001
 
         public void Fire(Player player)
         {
-            if (_CanFire == false)
+            if (_canFire == false)
                 throw new ArgumentOutOfRangeException(nameof(_bullets));
 
             _bullets--;
